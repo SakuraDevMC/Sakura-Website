@@ -4,6 +4,7 @@ import discordLogo from './discord.svg';
 import githubLogo from './github.svg';
 import './App.css';
 import elementAnimation from 'element-animation';
+import Repositories from './components/Repositories';
 
 function App() {
     useEffect(() => {
@@ -80,6 +81,7 @@ function App() {
                     </a>
                 </div>
             </header>
+            <Repositories />
         </div>
     );
 }
