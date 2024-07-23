@@ -73,7 +73,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### Contact
 
-For any inquiries, please contact us at [info@sakuradevmc.com](mailto:info@sakuradevmc.com).
+For any inquiries, please contact us at [info@sakurastudios.co](mailto:info@sakurastudios.co).
 
 Thank you for visiting the Sakura Studios Website repository! Enjoy your stay.
 ```
