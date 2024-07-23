@@ -1,10 +1,53 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
+import './App.css';
 import discordLogo from './discord.svg';
 import githubLogo from './github.svg';
-import './App.css';
 import elementAnimation from 'element-animation';
-import Repositories from './components/Repositories';
+
+const projects = [
+    {
+        title: "Survivor MC",
+        category: "Minecraft Server",
+        image: "temp.png",
+        description: "A zombie survival server.",
+        status: "Available"
+    },
+    {
+        title: "Twitch Connect",
+        category: "Minecraft Plugin",
+        image: "temp.png",
+        description: "A Minecraft plugin that connects a Twitch streamer's chat to Minecraft.",
+        status: "Available"
+    },
+    {
+        title: "Block Storm",
+        category: "Minecraft Plugin",
+        image: "temp.png",
+        description: "Every player receives a random block every 60 seconds, making gameplay fresh and unpredictable.",
+        status: "Available"
+    },
+    {
+        title: "Placeholder",
+        category: "Placeholder",
+        image: "temp.png",
+        description: "Placeholder",
+        status: "Available"
+    },
+    {
+        title: "Placeholder",
+        category: "Placeholder",
+        image: "temp.png",
+        description: "Placeholder.",
+        status: "Available"
+    },
+    {
+        title: "Placeholder",
+        category: "Placeholder",
+        image: "temp.png",
+        description: "Placeholder.",
+        status: "Coming Soon"
+    },
+];
 
 function App() {
     useEffect(() => {
@@ -21,7 +64,7 @@ function App() {
             size: [20, 40],
             duration: [10, 20],
             amount: [15, 20],
-            opacity: [0.5, 0.9]  // Add opacity range
+            opacity: [0.5, 0.9]
         };
 
         const elemAnim = new elementAnimation(container, props, options);
@@ -66,12 +109,21 @@ function App() {
         <div className="App">
             <div id="falling-leaves-container"></div>
             <header className="App-header">
-                <div className="circle-background">
-                    <img src={logo} className="App-logo" alt="logo" />
+                <h1>Sakura Studios</h1>
+                <p>The page is currently being built for Sakura Studios.</p>
+                <div className="projects-grid">
+                    {projects.map((project, index) => (
+                        <div className="project-card" key={index}>
+                            <img src={project.image} alt={project.title} className="project-image" />
+                            <div className="project-info">
+                                <h3>{project.category}</h3>
+                                <h2>{project.title}</h2>
+                                <p>{project.description}</p>
+                                {project.status === "Coming Soon" && <span className="coming-soon">Coming Soon</span>}
+                            </div>
+                        </div>
+                    ))}
                 </div>
-                <p>
-                    The page is currently being built for Sakura Studios.
-                </p>
                 <div className="social-icons">
                     <a href="https://discord.gg/qBdvgW9EGF" target="_blank" rel="noopener noreferrer">
                         <img src={discordLogo} alt="Discord" className="social-icon" />
@@ -81,7 +133,6 @@ function App() {
                     </a>
                 </div>
             </header>
-            <Repositories />
         </div>
     );
 }
