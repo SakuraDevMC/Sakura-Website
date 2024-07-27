@@ -1,53 +1,18 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import discordLogo from './discord.svg';
-import githubLogo from './github.svg';
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import ExpertiseSection from './components/ExpertiseSection';
+import ProjectsSection from './components/ProjectsSection';
+import Footer from './components/Footer';
+import BankerPage from './pages/BankerPage';
+import HitmanPage from './pages/HitmanPage';
+import ProjectSurvivorMC from './pages/ProjectSurvivorMC';
+import ProjectTwitchConnect from './pages/ProjectTwitchConnect';
+import ProjectBlockStorm from './pages/ProjectBlockStorm';
 import elementAnimation from 'element-animation';
 
-const projects = [
-    {
-        title: "Survivor MC",
-        category: "Minecraft Server",
-        image: "temp.png",
-        description: "A zombie survival server.",
-        status: "Available"
-    },
-    {
-        title: "Twitch Connect",
-        category: "Minecraft Plugin",
-        image: "temp.png",
-        description: "A Minecraft plugin that connects a Twitch streamer's chat to Minecraft.",
-        status: "Available"
-    },
-    {
-        title: "Block Storm",
-        category: "Minecraft Plugin",
-        image: "temp.png",
-        description: "Every player receives a random block every 60 seconds, making gameplay fresh and unpredictable.",
-        status: "Available"
-    },
-    {
-        title: "Placeholder",
-        category: "Placeholder",
-        image: "temp.png",
-        description: "Placeholder",
-        status: "Available"
-    },
-    {
-        title: "Placeholder",
-        category: "Placeholder",
-        image: "temp.png",
-        description: "Placeholder.",
-        status: "Available"
-    },
-    {
-        title: "Placeholder",
-        category: "Placeholder",
-        image: "temp.png",
-        description: "Placeholder.",
-        status: "Coming Soon"
-    },
-];
 
 function App() {
     useEffect(() => {
@@ -106,34 +71,23 @@ function App() {
     }, []);
 
     return (
-        <div className="App">
-            <div id="falling-leaves-container"></div>
-            <header className="App-header">
-                <h1>Sakura Studios</h1>
-                <p>The page is currently being built for Sakura Studios.</p>
-                <div className="projects-grid">
-                    {projects.map((project, index) => (
-                        <div className="project-card" key={index}>
-                            <img src={project.image} alt={project.title} className="project-image" />
-                            <div className="project-info">
-                                <h3>{project.category}</h3>
-                                <h2>{project.title}</h2>
-                                <p>{project.description}</p>
-                                {project.status === "Coming Soon" && <span className="coming-soon">Coming Soon</span>}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                <div className="social-icons">
-                    <a href="https://discord.gg/qBdvgW9EGF" target="_blank" rel="noopener noreferrer">
-                        <img src={discordLogo} alt="Discord" className="social-icon" />
-                    </a>
-                    <a href="https://github.com/SakuraDevMC" target="_blank" rel="noopener noreferrer">
-                        <img src={githubLogo} alt="GitHub" className="social-icon" />
-                    </a>
-                </div>
-            </header>
-        </div>
+        <Router>
+            <div className="App">
+                <div id="falling-leaves-container"></div>
+                <Navbar />
+                <HeroSection />
+                <ExpertiseSection />
+                <ProjectsSection />
+                <Footer />
+                <Routes>
+                    <Route path="/banker" element={<BankerPage />} />
+                    <Route path="/hitman" element={<HitmanPage />} />
+                    <Route path="/project-survivor-mc" element={<ProjectSurvivorMC />} />
+                    <Route path="/project-twitch-connect" element={<ProjectTwitchConnect />} />
+                    <Route path="/project-block-storm" element={<ProjectBlockStorm />} />
+                </Routes>
+            </div>
+        </Router>
     );
 }
 
